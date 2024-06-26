@@ -35,6 +35,7 @@ pipeline {
     stage('Run Image') {
       steps{
         script {
+          sh "cd /Pipeline-Testing"
           // Ensure the script is executable
           sh 'chmod +x flask.sh'
 
