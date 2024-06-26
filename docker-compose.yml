@@ -1,16 +1,14 @@
 version: "3"
 
 services:
-  flaskappp:
-    image: flaskapp
-    ports: 
-      - "3000:3000"
+
 
   jenkins:
-    image: jenkins/jenkins:latest
+    image: jenkins-docker:latest
     ports:
       - "8080:8080"
       - "5000:5000"
+      - "3000:3000"
     volumes:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock

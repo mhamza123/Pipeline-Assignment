@@ -1,15 +1,20 @@
 pipeline {
+
   environment {
-    imagename = "ihamza59/helloo"
+    imagename = "flaskapp"
     dockerImage = ''
   }
+
   agent any
+
   stages {
+
     stage('Cloning Git') {
       steps {
         git([url: 'https://github.com/mhamza123/Pipeline-Testing.git', branch: 'master', credentialsId: 'd5faf3eb-8afc-42df-b934-2a3d3c030656'])
       }
     }
+
     stage('SonarQube Analysis') {
       steps{
         script{
@@ -20,6 +25,7 @@ pipeline {
         }
       }
     }
+
     stage('Building image') {
       steps{
         script {
@@ -27,16 +33,14 @@ pipeline {
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Run Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
-          }
+          dockerImage.run('-d -p 3000:3000')
         }
       }
     }
+    
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $imagename:$BUILD_NUMBER"
