@@ -36,7 +36,7 @@ pipeline {
       steps{
         script {
           // Ensure the script is executable
-          sh 'chmod +x run_flaskapp.sh'
+          sh 'chmod +x flask.sh'
 
           // Run the shell script
           sh './flask.sh'
