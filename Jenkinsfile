@@ -12,6 +12,7 @@ pipeline {
     stage('Cloning Git') {
       steps {
         sh "cd home/"
+        sh "echo "moved to home""
         git([url: 'https://github.com/mhamza123/Pipeline-Testing.git', branch: 'master', credentialsId: 'd5faf3eb-8afc-42df-b934-2a3d3c030656'])
       }
     }
