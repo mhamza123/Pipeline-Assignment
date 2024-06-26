@@ -36,7 +36,7 @@ pipeline {
         script {
           // Ensure the script is executable and run it
           sh '''
-            cd $WORKSPACE
+            cd $WORKSPACE/Pipeline-Testing  # Adjust the path to match where flask.sh is located
             chmod +x flask.sh
             ./flask.sh
           '''
