@@ -35,7 +35,7 @@ pipeline {
     stage('Run Image') {
       steps{
         script {
-          sh "docker run -d -p 3002:3002 $imagename"
+          sh "sh ./home/flask.sh"
         }
       }
     }
