@@ -35,7 +35,9 @@ pipeline {
     stage('Run Image') {
       steps{
         script {
-          sh "./home/flask.sh"
+          script {
+          sh 'chmod +x run_flaskapp.sh'
+          sh './flask.sh'
         }
       }
     }
