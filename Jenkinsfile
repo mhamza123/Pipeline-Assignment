@@ -35,7 +35,7 @@ pipeline {
     stage('Run Image') {
       steps{
         script {
-          sh "sh ./home/flask.sh"
+          sh "./home/flask.sh"
         }
       }
     }
