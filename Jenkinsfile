@@ -34,12 +34,7 @@ pipeline {
     stage('Run Image') {
       steps {
         script {
-          // Ensure the script is executable and run it
-          sh '''
-            cd $WORKSPACE/Pipeline-Testing  # Adjust the path to match where flask.sh is located
-            chmod +x flask.sh
-            ./flask.sh
-          '''
+          sh 'docker run -d -p 3002:3002 $imagename'
         }
       }
     }
